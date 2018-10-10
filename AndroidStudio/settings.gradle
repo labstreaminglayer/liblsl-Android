@@ -1,1 +1,6 @@
-include ':ReceiveStringMarkers', ':SendStringMarkers'
+include ':ReceiveStringMarkers'
+include ':SendStringMarkers'
+
+// Tell gradle where to find liblsl-Java
+include 'liblsl-Java'
+project(':liblsl-Java').projectDir = new File('../../liblsl-Java')

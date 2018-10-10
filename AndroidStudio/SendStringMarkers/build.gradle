@@ -1,20 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
     defaultConfig {
         applicationId "edu.ucsd.sccn.sendstringmarkers"
         minSdkVersion 17
-        targetSdkVersion 24
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        externalNativeBuild {
-            cmake {
-                cppFlags "-std=c++11 -frtti -fexceptions"
-            }
-        }
     }
     buildTypes {
         release {
@@ -22,39 +17,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    externalNativeBuild {
-        cmake {
-            path "../CMakeLists.txt"
-        }
-    }
-
-    dexOptions {
+        dexOptions {
         javaMaxHeapSize "2048m"
-    }
-
-    sourceSets {
-        main {
-            java.srcDirs += '../../../liblsl-Java/src'
-        }
     }
 }
 
 dependencies {
-    compile fileTree(dir: '../libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: '../libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    testCompile 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:28.+'
+    implementation project(':liblsl-Java')
+    testImplementation 'junit:junit:4.12'
 }
-
-//copy native libraries to per project location
-task copyJniLibs(type: Copy) {
-    from '../jniLibs'
-    into 'src/main/jniLibs'
-}
-tasks.withType(JavaCompile) {
-    compileTask -> compileTask.dependsOn(copyJniLibs)
-}
-clean.dependsOn 'cleanCopyJniLibs'
-
