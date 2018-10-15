@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/ReceiveStringMarkers" />
             <option value="$PROJECT_DIR$/SendStringMarkers" />
+            <option value="$PROJECT_DIR$/../../liblsl-Java" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
