@@ -1,20 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "28.0.3"
+    compileSdkVersion 28
     defaultConfig {
         applicationId "edu.ucsd.sccn.sendstringmarkers"
         minSdkVersion 17
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        externalNativeBuild {
-            cmake {
-                cppFlags "-std=c++11 -frtti -fexceptions"
-            }
-        }
     }
     buildTypes {
         release {
@@ -22,38 +16,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    externalNativeBuild {
-        cmake {
-            path "../CMakeLists.txt"
-        }
-    }
-
     dexOptions {
         javaMaxHeapSize "2048m"
     }
-
-    sourceSets {
-        main {
-            java.srcDirs += '../../../liblsl-Java/src'
-        }
-    }
-
 }
-
-
 
 dependencies {
     implementation fileTree(dir: '../libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26+'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation project(':liblsl-Java')
 }
-
-//copy native libraries to per project location
-task copyJniLibs(type: Copy) {
-    from '../jniLibs'
-    into 'src/main/jniLibs'
-}
-tasks.withType(JavaCompile) {
-    compileTask -> compileTask.dependsOn(copyJniLibs)
-}
-clean.dependsOn 'cleanCopyJniLibs'
-
