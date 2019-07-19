@@ -1,6 +1,7 @@
-This is currently the most robust and straightforward way of making Android apps that incorporate LSL. These instructions apply to Android Studio 3.2.0. 
+This is currently the most robust and straightforward way of making Android apps that incorporate LSL. These instructions apply to Android Studio 3.4.2.
+For upcoming liblsl versions, a recent [CMake](https://cmake.org/download/) version not yet included in the SDK is required, see `../liblsl-Java/build.gradle` for instructions.
 
-jna 4.5.0 is automatically downloaded and included, so just in case something goes wrong you'll have to make sure your APK has `libjnidispatch.so` and `liblsl.so` in all CPU architecture dependent subdirectories of `lib`, e.g.
+jna 5.3.1 is automatically downloaded and included, so just in case something goes wrong you'll have to make sure your APK has `libjnidispatch.so` and `liblsl.so` in all CPU architecture dependent subdirectories of `lib`, e.g.
 
 [your apk]/lib
     arm64-v8a
