@@ -3,14 +3,17 @@ For upcoming liblsl versions, a recent [CMake](https://cmake.org/download/) vers
 
 jna 5.3.1 is automatically downloaded and included, so just in case something goes wrong you'll have to make sure your APK has `libjnidispatch.so` and `liblsl.so` in all CPU architecture dependent subdirectories of `lib`, e.g.
 
-[your apk]/lib
-    arm64-v8a
-        libjnidispatch.so
-        liblsl.so
-    armeabi
-        libjnidispatch.so
-        liblsl.so
+```
+[your apk]
+├── lib
+│   └── arm64-v8a
+│        ├── libjnidispatch.so
+│        └── liblsl.so
+│   └── armeabi
+│        ├── libjnidispatch.so
+│        └── liblsl.so
 ...
+```
 
 To run, select the desired module from the list box the the left of the green arrow, and click the green arrow.
 
