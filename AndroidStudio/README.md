@@ -35,9 +35,9 @@ As it is a dependency of the SendStringMarkers project, `liblsl.so` is built fir
 
 ### Custom Applications
 
-To make other apps in Android Studio, the easiest way is to exit Android Studio, copy the SendStringMarkers folder and change every reference to SendStringMarkers in the copied folder to a new name (using a text editor).
+To make other LSL apps in Android Studio, the easiest way is to exit Android Studio, copy the SendStringMarkers folder and change every reference to SendStringMarkers in the copied folder to a new name (using a text editor).
 
-If you would like to use LSL in an android app built without Android Studio, it is recommended that you build one of the above Provided Examples in Android Studio then extract the needed compiled library files from the .apk file (using 7-zip or similar).
+If you would like to use LSL in an Android app built without Android Studio, it is recommended that you build one of the above Provided Examples in Android Studio then extract the needed compiled library files from the .apk file (using 7-zip or similar).
 
 # Troubleshooting
 
