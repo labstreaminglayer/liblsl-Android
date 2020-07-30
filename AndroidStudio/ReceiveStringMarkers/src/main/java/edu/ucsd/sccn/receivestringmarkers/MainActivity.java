@@ -29,10 +29,8 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
 
         tv = new TextView(this);
-        tv.setText( "Attempting to send LSL markers: ");
+        tv.setText( "Attempting to receive LSL markers: ");
         setContentView(tv);
-
-
 
         AsyncTask.execute(new Runnable() {
             public void run() {
@@ -49,14 +47,15 @@ public class MainActivity extends Activity
                     return;
                 }
 
+
                 String[] sample = new String[1];
                 try{
                 while (true) {
-                        inlet.pull_sample(sample);
+                        double timestamp = inlet.pull_sample(sample, 1.0);
                         final String finalSample = sample[0];
                         System.out.println(sample);
 
-                        showMessage("Received: " + finalSample);
+                        showMessage("Received: " + finalSample + "; at: " + timestamp);
 
                     }
                 } catch (Exception ex) {
